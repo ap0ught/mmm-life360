@@ -1,0 +1,54 @@
+/**
+ * @file MMM-Life360.css
+ * @description Styling for MMM-Life360 module
+ * @author ap0ught
+ * @license MIT
+ */
+
+.life360-wrapper {
+  text-align: left;
+}
+
+.life360-wrapper table {
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+.life360-member {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.life360-member:last-child {
+  border-bottom: none;
+}
+
+.life360-member td {
+  padding: 10px 5px;
+}
+
+.life360-name {
+  font-weight: bold;
+  padding-right: 15px;
+  vertical-align: top;
+}
+
+.life360-details {
+  vertical-align: top;
+}
+
+.life360-address {
+  margin-bottom: 5px;
+}
+
+.life360-battery {
+  margin-bottom: 5px;
+}
+
+.life360-battery.battery-low {
+  color: #ff4444;
+}
+
+.life360-updated {
+  font-style: italic;
+  opacity: 0.7;
+}
