@@ -4,6 +4,10 @@ A MagicMirror² module for displaying Life360 location tracking data. This modul
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
+## 🚀 Quick Start
+
+New to MMM-Life360? Check out the [Quick Start Guide](QUICKSTART.md) to get up and running in 5 minutes!
+
 ## Features
 
 - 🌍 **Real-time Location Tracking**: Display current locations of Life360 circle members
