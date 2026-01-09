@@ -103,7 +103,7 @@ Module.register("MMM-Life360", {
       // Member name
       const nameCell = document.createElement("td");
       nameCell.className = "life360-name";
-      nameCell.innerHTML = location.name;
+      nameCell.textContent = location.name;
       row.appendChild(nameCell);
 
       // Location details
@@ -114,22 +114,32 @@ Module.register("MMM-Life360", {
 
       // Address
       if (this.config.showAddress && location.address) {
-        details += `<div class="life360-address">${location.address}</div>`;
+        const addressDiv = document.createElement("div");
+        addressDiv.className = "life360-address";
+        addressDiv.textContent = location.address;
+        detailsCell.appendChild(addressDiv);
       }
 
       // Battery
-      if (this.config.showBattery && location.battery !== undefined) {
-        const batteryClass = location.battery < 20 ? "battery-low" : "";
-        details += `<div class="life360-battery ${batteryClass}">🔋 ${location.battery}%</div>`;
+      if (this.config.showBattery && location.battery !== undefined && location.battery !== null) {
+        const batteryDiv = document.createElement("div");
+        batteryDiv.className = "life360-battery";
+        if (location.battery < 20) {
+          batteryDiv.className += " battery-low";
+        }
+        batteryDiv.textContent = "🔋 " + location.battery + "%";
+        detailsCell.appendChild(batteryDiv);
       }
 
       // Last updated
       if (this.config.showLastUpdated && location.timestamp) {
         const lastUpdate = this.getTimeSince(location.timestamp);
-        details += `<div class="life360-updated dimmed xsmall">Updated ${lastUpdate}</div>`;
+        const updatedDiv = document.createElement("div");
+        updatedDiv.className = "life360-updated dimmed xsmall";
+        updatedDiv.textContent = "Updated " + lastUpdate;
+        detailsCell.appendChild(updatedDiv);
       }
 
-      detailsCell.innerHTML = details;
       row.appendChild(detailsCell);
 
       table.appendChild(row);

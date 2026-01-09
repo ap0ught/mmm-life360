@@ -119,12 +119,16 @@ The module can be placed in any MagicMirror position region:
 
 ⚠️ **Important Security Information:**
 
-- Your Life360 credentials are stored in the MagicMirror config file
+- **Your Life360 credentials are stored in plain text** in the MagicMirror config file
+- Ensure your MagicMirror config file has proper file permissions (readable only by the user running MagicMirror)
+- Consider setting file permissions: `chmod 600 ~/MagicMirror/config/config.js`
 - Use a strong password and enable two-factor authentication on your Life360 account
-- Ensure your MagicMirror is on a secure network
+- Ensure your MagicMirror is on a secure, trusted network
+- Do not expose your MagicMirror to the public internet without proper authentication
 - Consider creating a dedicated Life360 account with limited access if sharing your mirror
 - This module uses the unofficial Life360 API which may change without notice
 - Life360 may block or limit API access - use responsibly
+- All API communication is done over HTTPS for transport security
 
 ## Troubleshooting
 

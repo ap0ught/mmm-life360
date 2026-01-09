@@ -8,6 +8,15 @@
 const NodeHelper = require("node_helper");
 const https = require("https");
 
+// Life360 API configuration
+// Note: This authorization token is for Life360's unofficial API client identification
+// It is not user-specific and is required for API access
+const LIFE360_API_CONFIG = {
+  hostname: "api-cloudfront.life360.com",
+  authHeader: "Basic U3dlcUFOQWdFVkVoVWt1cGVjcmVrYXN0ZXFhVGVXckFTV2E1dXN3MzpXMnZBV3JlY2hhUHJlZGFoVVJhZ1VYYWZyQW5hbWVqdQ==",
+  userAgent: "Life360/22.49.0 (iPhone; iOS 16.0; Scale/3.00)"
+};
+
 module.exports = NodeHelper.create({
 
   start() {
@@ -39,15 +48,15 @@ module.exports = NodeHelper.create({
     });
 
     const options = {
-      hostname: "api-cloudfront.life360.com",
+      hostname: LIFE360_API_CONFIG.hostname,
       port: 443,
       path: "/v3/oauth2/token",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Content-Length": Buffer.byteLength(postData),
-        "Authorization": "Basic U3dlcUFOQWdFVkVoVWt1cGVjcmVrYXN0ZXFhVGVXckFTV2E1dXN3MzpXMnZBV3JlY2hhUHJlZGFoVVJhZ1VYYWZyQW5hbWVqdQ==",
-        "User-Agent": "Life360/22.49.0 (iPhone; iOS 16.0; Scale/3.00)"
+        "Authorization": LIFE360_API_CONFIG.authHeader,
+        "User-Agent": LIFE360_API_CONFIG.userAgent
       }
     };
 
@@ -99,13 +108,13 @@ module.exports = NodeHelper.create({
     console.log(this.name + ": Fetching location data...");
 
     const options = {
-      hostname: "api-cloudfront.life360.com",
+      hostname: LIFE360_API_CONFIG.hostname,
       port: 443,
       path: "/v3/circles",
       method: "GET",
       headers: {
         "Authorization": "Bearer " + this.authToken,
-        "User-Agent": "Life360/22.49.0 (iPhone; iOS 16.0; Scale/3.00)"
+        "User-Agent": LIFE360_API_CONFIG.userAgent
       }
     };
 
